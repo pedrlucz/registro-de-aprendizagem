@@ -1,0 +1,15 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+    Tópicos:
+    <!-- pra criar listas -->
+    <ul>
+        {% for topic in topics %}
+            <li>{{ topic }}</li> <!-- pra ler o conteúdo da variável -->
+        {% empty %}
+            <li> Não há tópicos adicionados. </li> <!-- li = lista não ordenada-->
+        {% endfor %}
+    </ul> 
+
+{% endblock content %}

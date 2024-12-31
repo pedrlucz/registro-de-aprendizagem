@@ -1,0 +1,24 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+
+    <h3>Tópico: {{ topic }}</h3>
+
+    <p>Entradas: </p>
+    <ul>
+        {% for entry in entries %}
+
+        <!-- a lista dentro do for -->
+        <li>
+            <p>{{ entry.date_added | date:'M d, Y H:i' }}</p> <!-- o | pra filtrar, pega essa data e formata nessa data -->
+            <p>{{ entry.text | linebreaks }}</p> <!-- linebreaks = quebra as linhas quando necessário -->
+        </li>
+
+        {% empty %}
+        Não há registro
+
+        {% endfor %}
+
+    </ul>
+
+{% endblock content %}

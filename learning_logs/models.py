@@ -19,6 +19,7 @@ class Topic(models.Model):
 # entry porque? to entrando com uma determinada anotação 
 class Entry(models.Model):
     """Algo específico aprendido sobre um assunto"""
+    # esse topic é o proprio Topic lá em cima
     topic = models.ForeignKey(Topic, on_delete = models.CASCADE) # cada entrada eu tenho um tópico relacionado
     # on delete signifique que vai falar pro db, quando excluir um tópico, precisa excluir todas as entradas que estão relacionadas com esse tópico
     # o texto que vai ser a anotação
