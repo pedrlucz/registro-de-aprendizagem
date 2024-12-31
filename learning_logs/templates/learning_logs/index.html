@@ -1,3 +1,7 @@
-<h1>Learning Log</h1>
+{% extends "learning_logs/base.html" %}  <!-- dentro de template, procura ai a pasta learning_logs e dentro dela o arquivo... -->
 
-<p>Essa aplicação te ajudará a organizar seus estudos</p>
+    <!-- esse conteúdo vai ser usado dentro da base -->
+{% block content %}
+    <p>Essa aplicação te ajudará a organizar seus estudos</p>
+{% endblock content %}
+
