@@ -62,5 +62,18 @@ def new_entry(request, topic_id):
     """Adiciona uma nova entrada para um assunto em particular"""
     topic = Topic.objects.get(id = topic_id) # pegar lá no db
     
-    # que você só está clicando
+    # que você só está clicando, depois rever aula 13, min 15
+    if request.method != 'POST': # não vai ter os dados enviados, cria um formulário em branco
+        form = EntryForm()
     
+    else: # processa os dados
+        form = EntryForm(data = request.POST) # porque esse form ainda não está completo, e só quero salvar quando tiver completo, falta o tópico ainda
+        # por isso não posso salvar ainda, por isso não pego a requisição completa, apenas o "data"
+        
+        if form.is_valid():
+            # pega o tópico para adicionar nas anotações
+            new_entry = form.save(commit=False) # pra ele não salvar direto, vai criar um objeto e não salvar no db, o padrão é true
+            # vai ser um objeto com os dados do formulário
+            new_entry.topic = topic # depois disso ta completo
+            new_entry.save()
+            return HttpResponseRedirect(reverse('')) # 22:15 aula 13
