@@ -6,10 +6,15 @@
     <!-- pra criar listas -->
     <ul>
         {% for topic in topics %}
-            <li>{{ topic }}</li> <!-- pra ler o conteúdo da variável -->
+            <li>
+                <a href="{% url 'topic' topic.id %}">{{ topic }}</a>
+            </li> <!-- pra ler o conteúdo da variável -->
         {% empty %}
             <li> Não há tópicos adicionados. </li> <!-- li = lista não ordenada-->
         {% endfor %}
     </ul> 
+
+    <a href="{% url 'new_topic' %}"> Adicionar novos tópicos</a> <!-- vai mandar para outra pag para add tópicos -->
+    <!-- ele envia o formulário pra ele mesmo, final da aula 12 pra relembrar -->
 
 {% endblock content %}
