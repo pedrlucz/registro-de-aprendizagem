@@ -1,7 +1,8 @@
 {% extends "learning_logs/base.html" %}
 
 {% block content %}
-
+    <p>Adicione um novo tópico: </p>
+    
     <!-- aqui que ele vai botar o formulário que ele criou -->
     <!--pra enviar pra mesma págia em que está, poderia só colocar um ponto -->
     <form action="{% url 'new_topic' %}" method="POST">

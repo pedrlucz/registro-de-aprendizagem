@@ -1,0 +1,17 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+<!-- já vai ta sendo passado pra pag new entry -->
+<p><a href = "{% url 'topic' topic.id %}" > {{ topic }} </a></p>
+
+<p>Adicione uma nova entrada:</p>
+
+<!-- o action vai enviar os dados desse formulário para o new_entry com o topic id -->
+<form action = "{% url 'new_entry' topic.id %}" method = "post">
+    {% csrf_token %} <!-- pra segurança do formulário, do próprio django -->
+    {{ form.as_p }}
+    <button name = "submit">Adicionar</button>
+</form>
+
+{% endblock content %}

@@ -72,8 +72,13 @@ def new_entry(request, topic_id):
         
         if form.is_valid():
             # pega o tópico para adicionar nas anotações
-            new_entry = form.save(commit=False) # pra ele não salvar direto, vai criar um objeto e não salvar no db, o padrão é true
+            new_entry = form.save(commit = False) # pra ele não salvar direto, vai criar um objeto e não salvar no db, o padrão é true
             # vai ser um objeto com os dados do formulário
             new_entry.topic = topic # depois disso ta completo
             new_entry.save()
-            return HttpResponseRedirect(reverse('')) # 22:15 aula 13
+            return HttpResponseRedirect(reverse('topic', args = [topic_id])) # quero redirecionar para a página tópic e redirecionar com o id
+
+    context = {
+        'topic': topic, 'form': form
+    }
+    return render(request, 'leraning_logs/new_entry.html', context)
